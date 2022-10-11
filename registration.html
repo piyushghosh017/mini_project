@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/851e4aee1b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      function validation(event) {
+        event.preventDefault();
+        console.log(event.target[0]);
+
+        for (x = 0; x < event.target.length; x++) {
+          // document
+          //   .getElementById(event.target[x].id)
+          //   .nextElementSibling.remove();
+          // var name;
+          // if( document.getElementById(event.target[x].id=="First Name" ){
+          //    name=document.getElementById(event.target[x].value)
+          // }
+
+          if (event.target[x].value.trim() == "") {
+            const node = document.createElement("p");
+            const text = document.createTextNode(
+              event.target[x].id + " Can't be Empty"
+            );
+            node.style.color = "red";
+            node.appendChild(text);
+            document
+              .getElementById(event.target[x].id)
+              .parentNode.insertBefore(node, event.target[x].id.nextSibling);
+            return false;
+          }
+          // if (!isNaN(name1)) {
+          //   document.getElementById("blankMsg").innerHTML =
+          //     "**Only characters are allowed";
+          //   return false;
+          // }
+
+          //character data validation
+          // if (!isNaN(name2)) {
+          //   document.getElementById("Firs").innerHTML =
+          //     "**Only characters are allowed";
+          //   return false;
+          // }
+        }
+      }
+      function verifyPassword() {
+        var pw = document.getElementById("Password").value;
+        var pw2 = document.getElementById("Re-type Password").value;
+        if (pw.length < 8) {
+          document.getElementById("Password").innerHTML =
+            "Password length must be atleast 8 characters";
+          return false;
+        }
+        if (pw.length > 15) {
+          document.getElementById("message").innerHTML =
+            "Password length must not exceed 15 characters";
+          return false;
+        }
+        if (pw1 != pw2) {
+          alert("Passwords did not match");
+          return false;
+        } else {
+          return true;
+        }
+      }
+      function getMyEmailValidation() {
+        var emailValidation = document.getElementById("Email").value;
+        var indexWithAt = emailValidation.indexOf("@");
+        var indexWithDot = emailValidation.lastIndexOf(".");
+        if (indexWithAt > 3 || indexWithDot > indexWithAt + 4) {
+          alert("Please make sure email address contains @ and .com");
+          return false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <section class="h-100 bg-dark">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <div class="col-xl-6 d-none d-xl-block">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                    alt="Sample photo"
+                    class="img-fluid"
+                    style="
+                      border-top-left-radius: 0.25rem;
+                      border-bottom-left-radius: 0.25rem;
+                    "
+                  />
+                </div>
+                <div class="col-xl-6">
+                  <div class="card-body p-md-5 text-black">
+                    <h3 class="mb-5 text-uppercase">Sign up</h3>
+                    <form onsubmit="validation(event)" action="login.html">
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="First Name "
+                              class="form-control form-control-lg"
+                            />
+                            <label class="form-label" for="form3Example1m"
+                              >First name</label
+                            >
+                          </div>
+                          <p id="fSpaceErr"></p>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="Last Name"
+                              class="form-control form-control-lg"
+                            />
+                            <label class="form-label" for="form3Example1n"
+                              >Last name</label
+                            >
+                          </div>
+                          <p id="lSpaceErr"></p>
+                        </div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="Email"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Example97"
+                          >Email ID</label
+                        >
+                        <p id="eSpaceErr"></p>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="Password"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Example9"
+                          >Password</label
+                        >
+                        <p id="pSpaceErr"></p>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="Re-type Password "
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Example9"
+                          >Re-type password</label
+                        >
+                        <p id="rpSpaceErr"></p>
+                      </div>
+
+                      <div class="d-flex justify-content-end pt-3">
+                        <button
+                          type="submit"
+                          class="btn btn-warning btn-lg btn-block"
+                        >
+                          Submit form
+                        </button>
+                      </div>
+                      <br />
+                    </form>
+                    <!-- form -->
+                    <div>
+                      Already a member ? <a href="login.html">Signin</a>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                      <p>or sign up with:</p>
+                      <button
+                        type="button"
+                        class="btn btn-link btn-floating mx-1"
+                      >
+                        <i class="fab fa-facebook-f"></i>
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-link btn-floating mx-1"
+                      >
+                        <i class="fab fa-google"></i>
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-link btn-floating mx-1"
+                      >
+                        <i class="fab fa-twitter"></i>
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-link btn-floating mx-1"
+                      >
+                        <i class="fab fa-github"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
